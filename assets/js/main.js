@@ -52,12 +52,17 @@ const intervalId = setInterval(function () {
         numbersEl.style.display = 'none';
         clearInterval(intervalId);
         /*Dopo 30 secondi i numeri scompaiono e l'utente deve inserire, 
-uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().*/
+        uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().*/
 
         for (let i = 0; i < 5; i++) {
             const userNumber = prompt('Inserisci il primo numero della serie');
             userList.push(userNumber);
+            console.log(userList[i]);
+            if (pcGenList.includes(userList[i])) {
+                console.log('è incluso');
+            }
         }
+
     }
 }, 1000);
 
@@ -66,6 +71,7 @@ console.log(userList);
 /* Dopo che sono stati inseriti i 5 numeri, il software dice 
 quanti e quali dei numeri da indovinare sono stati individuati.
  */
+
 
 
 

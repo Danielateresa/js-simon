@@ -18,23 +18,24 @@ const timerEl = document.querySelector('.timer');
 let pcGenList = [];
 let userList = [];
 //ciclo for per ripetere 5 volte la generazione dei numeri casuali da 0 a 10
-function numberGenerator(pcGenList) {
+//questa funzione genera 5 numeri casuali
+function numberGenerator(list) {
     for (let i = 0; i < 5; i++) {
 
         //la funzione mathrandom mi genera un numero tra 0 e 10
         const randomNumber = Math.floor(Math.random() * 10) + 1;
 
         //con push aggiungo un numero generato alla lista, ad ogni iterazione
-        pcGenList.push(randomNumber);
+        list.push(randomNumber);
 
     }
-    return pcGenList
+    return list
 }
 const GeneratedRandomPcList = numberGenerator(pcGenList);
 console.log('lista del pc', GeneratedRandomPcList);
 //inserisco il generatore di array numeri casuali in una funzone
 
-numbersEl.innerText = 'Osserva i seguenti numeri e carca di ricordarli ' + pcGenList;
+numbersEl.insertAdjacentHTML('beforeend', `<h3>Osserva i seguenti numeri e carca di ricordarli</h3> <br> <h1>${pcGenList}</h1>`);
 
 //parte un timer di 30 secondi. 
 //Dopo 30 secondi i numeri scompaiono
@@ -46,7 +47,7 @@ const intervalId = setInterval(function () {
     timerEl.innerText = seconds;
     seconds--;
     //se il countdown è pari a -1 (così vsualizzo anche l'1) ferma il ciclo setinterval e fai scomparire i numeri
-    if (seconds == 0) {
+    if (seconds === 0) {
 
         timerEl.style.display = 'none';
         numbersEl.style.display = 'none';
@@ -61,7 +62,7 @@ quanti e quali dei numeri da indovinare sono stati individuati.
  */
 const containerEl = document.querySelector('.container');
 let score = 0;
-setTimeout(answers, 30000);
+setTimeout(answers, 32000);
 function answers() {
 
     for (let i = 0; i < 5; i++) {

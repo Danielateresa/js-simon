@@ -59,22 +59,32 @@ const intervalId = setInterval(function () {
 /* Dopo che sono stati inseriti i 5 numeri, il software dice 
 quanti e quali dei numeri da indovinare sono stati individuati.
  */
+const containerEl = document.querySelector('.container');
+let score = 0;
 setTimeout(answers, 5000);
 function answers() {
+
     for (let i = 0; i < 5; i++) {
         const userNumber = Number(prompt('Inserisci un numero alla volta di quelli visualizzati'));
         userList.push(userNumber);
         console.log('qui numero utente', userList[i]);
-        let score = 0;
+
+
+        let arrayScore = [];
         if (GeneratedRandomPcList.includes(userList[i])) {
+            for (let i = 0; i < userList.length; i++) {
+                arrayScore.push(1);
+                console.log('lista punti da sommare', arrayScore);
 
-            score++
-            console.log(userList[i], 'è incluso, hai totalizzato ', score, 'punti');
-
-        } else {
-            console.log(userList[i], 'NON è incluso, hai totalizzato ', score, 'punti');
+            }
+            score += arrayScore[i];
+            console.log(userList[i], 'è incluso, hai ottenuto 1 punto');
+            containerEl.insertAdjacentHTML('beforeend', `<h3>${userList[i]} è incluso, hai ottenuto 1 punto</h3>`);
         }
     }
+
+    console.log('hai totalizzato ', score, 'punti');
+    containerEl.insertAdjacentHTML('beforeend', `<h2>Hai totalizzato ${score} punti</h2>`);
 }
 //console.log(userList);
 

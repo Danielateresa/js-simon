@@ -38,7 +38,7 @@ numbersEl.innerText = 'Osserva i seguenti numeri e carca di ricordarli ' + pcGen
 
 //parte un timer di 30 secondi. 
 //Dopo 30 secondi i numeri scompaiono
-let seconds = 30;
+let seconds = 5;
 
 //il timer deve dimininuire i secondi a ogni secondo che passa
 //set interval ripete ogni 1000 millisecondi (1 secondo) il decrementare dei 30 secondi
@@ -46,32 +46,33 @@ const intervalId = setInterval(function () {
     timerEl.innerText = seconds;
     seconds--;
     //se il countdown è pari a -1 (così vsualizzo anche l'1) ferma il ciclo setinterval e fai scomparire i numeri
-    if (seconds == -1) {
+    if (seconds == 0) {
 
         timerEl.style.display = 'none';
         numbersEl.style.display = 'none';
         clearInterval(intervalId);
-        /*Dopo 30 secondi i numeri scompaiono e l'utente deve inserire, 
-        uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().*/
-
-
 
     }
 }, 1000);
 
+
 /* Dopo che sono stati inseriti i 5 numeri, il software dice 
 quanti e quali dei numeri da indovinare sono stati individuati.
  */
-setTimeout(answers, 30000);
+setTimeout(answers, 5000);
 function answers() {
     for (let i = 0; i < 5; i++) {
         const userNumber = Number(prompt('Inserisci un numero alla volta di quelli visualizzati'));
         userList.push(userNumber);
         console.log('qui numero utente', userList[i]);
+        let score = 0;
         if (GeneratedRandomPcList.includes(userList[i])) {
-            console.log(userList[i], 'è incluso');
+
+            score++
+            console.log(userList[i], 'è incluso, hai totalizzato ', score, 'punti');
+
         } else {
-            console.log(userList[i], 'NON è incluso');
+            console.log(userList[i], 'NON è incluso, hai totalizzato ', score, 'punti');
         }
     }
 }

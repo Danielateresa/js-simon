@@ -31,14 +31,14 @@ function numberGenerator(pcGenList) {
     return pcGenList
 }
 const GeneratedRandomPcList = numberGenerator(pcGenList);
+console.log('lista del pc', GeneratedRandomPcList);
 //inserisco il generatore di array numeri casuali in una funzone
 
-console.log(pcGenList);
 numbersEl.innerText = 'Osserva i seguenti numeri e carca di ricordarli ' + pcGenList;
 
 //parte un timer di 30 secondi. 
 //Dopo 30 secondi i numeri scompaiono
-let seconds = 5;
+let seconds = 30;
 
 //il timer deve dimininuire i secondi a ogni secondo che passa
 //set interval ripete ogni 1000 millisecondi (1 secondo) il decrementare dei 30 secondi
@@ -54,23 +54,30 @@ const intervalId = setInterval(function () {
         /*Dopo 30 secondi i numeri scompaiono e l'utente deve inserire, 
         uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().*/
 
-        for (let i = 0; i < 5; i++) {
-            const userNumber = prompt('Inserisci il primo numero della serie');
-            userList.push(userNumber);
-            console.log(userList[i]);
-            if (pcGenList.includes(userList[i])) {
-                console.log('è incluso');
-            }
-        }
+
 
     }
 }, 1000);
 
-console.log(userList);
-
 /* Dopo che sono stati inseriti i 5 numeri, il software dice 
 quanti e quali dei numeri da indovinare sono stati individuati.
  */
+setTimeout(answers, 30000);
+function answers() {
+    for (let i = 0; i < 5; i++) {
+        const userNumber = Number(prompt('Inserisci un numero alla volta di quelli visualizzati'));
+        userList.push(userNumber);
+        console.log('qui numero utente', userList[i]);
+        if (GeneratedRandomPcList.includes(userList[i])) {
+            console.log(userList[i], 'è incluso');
+        } else {
+            console.log(userList[i], 'NON è incluso');
+        }
+    }
+}
+//console.log(userList);
+
+
 
 
 

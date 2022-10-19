@@ -38,7 +38,7 @@ numbersEl.innerText = 'Osserva i seguenti numeri e carca di ricordarli ' + pcGen
 
 //parte un timer di 30 secondi. 
 //Dopo 30 secondi i numeri scompaiono
-let seconds = 5;
+let seconds = 30;
 
 //il timer deve dimininuire i secondi a ogni secondo che passa
 //set interval ripete ogni 1000 millisecondi (1 secondo) il decrementare dei 30 secondi
@@ -61,7 +61,7 @@ quanti e quali dei numeri da indovinare sono stati individuati.
  */
 const containerEl = document.querySelector('.container');
 let score = 0;
-setTimeout(answers, 5000);
+setTimeout(answers, 30000);
 function answers() {
 
     for (let i = 0; i < 5; i++) {
